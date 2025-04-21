@@ -3,12 +3,12 @@ from bs4 import BeautifulSoup
 import datetime
 from typing import Tuple, Optional
 
-class SpotPriceFetcher:
+class SpotPriceFetcherCNBC:
     def __init__(self):
         # URL for the CNBC quote page (USD/INR)
         self.url = "https://www.cnbc.com/quotes/INR="
 
-    def fetch_spot_price(self) -> Tuple[Optional[str], Optional[float]]:
+    def fetch_data(self) -> Tuple[Optional[str], Optional[float]]:
         """
         Fetches the latest spot price and last trade time for USD/INR from CNBC.
         Returns:
