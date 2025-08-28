@@ -1,7 +1,7 @@
 import aiohttp
 import asyncio
 from datetime import datetime
-from payloads.entry_payloads import entry_payloads
+from payloads.entry_payload import entry_payloads
 
 api_key = "wejdamed8baj4kpq"
 

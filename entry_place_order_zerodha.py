@@ -3,7 +3,7 @@ import aiohttp
 import pyotp
 import requests
 from datetime import datetime, time
-from payloads.entry_payloads import entry_payloads
+from payloads.entry_payload import entry_payloads
 
 KITE_USERNAME = 'DXU151'
 KITE_PASSWORD = 'Pratibha'
