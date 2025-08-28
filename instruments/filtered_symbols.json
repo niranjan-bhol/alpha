@@ -1,0 +1,38 @@
+[
+    {
+        "instrument_token": 137742596,
+        "exchange_token": "538057",
+        "tradingsymbol": "CPSEETF",
+        "exchange": "BSE"
+    },
+    {
+        "instrument_token": 151066372,
+        "exchange_token": "590103",
+        "tradingsymbol": "NIFTYBEES",
+        "exchange": "BSE"
+    },
+    {
+        "instrument_token": 256265,
+        "exchange_token": "1001",
+        "tradingsymbol": "NIFTY 50",
+        "exchange": "NSE"
+    },
+    {
+        "instrument_token": 268297,
+        "exchange_token": "1048",
+        "tradingsymbol": "NIFTY CPSE",
+        "exchange": "NSE"
+    },
+    {
+        "instrument_token": 595969,
+        "exchange_token": "2328",
+        "tradingsymbol": "CPSEETF",
+        "exchange": "NSE"
+    },
+    {
+        "instrument_token": 2707457,
+        "exchange_token": "10576",
+        "tradingsymbol": "NIFTYBEES",
+        "exchange": "NSE"
+    }
+]

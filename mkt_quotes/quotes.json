@@ -1,0 +1,163 @@
+{
+    "status": "success",
+    "data": {
+        "NSE:CPSEETF": {
+            "instrument_token": 595969,
+            "timestamp": "2025-08-28 10:03:34",
+            "last_trade_time": "2025-08-28 10:03:33",
+            "last_price": 88.08,
+            "last_quantity": 20,
+            "buy_quantity": 696300,
+            "sell_quantity": 824477,
+            "volume": 234060,
+            "average_price": 87.93,
+            "oi": 0,
+            "oi_day_high": 0,
+            "oi_day_low": 0,
+            "net_change": 0,
+            "lower_circuit_limit": 71.84,
+            "upper_circuit_limit": 107.76,
+            "ohlc": {
+                "open": 88,
+                "high": 88.99,
+                "low": 87.61,
+                "close": 88.56
+            },
+            "depth": {
+                "buy": [
+                    {
+                        "price": 88.05,
+                        "quantity": 4,
+                        "orders": 1
+                    },
+                    {
+                        "price": 88.04,
+                        "quantity": 2124,
+                        "orders": 2
+                    },
+                    {
+                        "price": 88.03,
+                        "quantity": 7409,
+                        "orders": 1
+                    },
+                    {
+                        "price": 88,
+                        "quantity": 7146,
+                        "orders": 10
+                    },
+                    {
+                        "price": 87.99,
+                        "quantity": 226,
+                        "orders": 1
+                    }
+                ],
+                "sell": [
+                    {
+                        "price": 88.08,
+                        "quantity": 282,
+                        "orders": 2
+                    },
+                    {
+                        "price": 88.1,
+                        "quantity": 7597,
+                        "orders": 2
+                    },
+                    {
+                        "price": 88.12,
+                        "quantity": 21,
+                        "orders": 1
+                    },
+                    {
+                        "price": 88.13,
+                        "quantity": 420,
+                        "orders": 1
+                    },
+                    {
+                        "price": 88.14,
+                        "quantity": 10118,
+                        "orders": 2
+                    }
+                ]
+            }
+        },
+        "NSE:NIFTYBEES": {
+            "instrument_token": 2707457,
+            "timestamp": "2025-08-28 10:03:35",
+            "last_trade_time": "2025-08-28 10:03:35",
+            "last_price": 277.75,
+            "last_quantity": 5,
+            "buy_quantity": 1050164,
+            "sell_quantity": 914693,
+            "volume": 2259623,
+            "average_price": 277.36,
+            "oi": 0,
+            "oi_day_high": 0,
+            "oi_day_low": 0,
+            "net_change": 0,
+            "lower_circuit_limit": 225.39,
+            "upper_circuit_limit": 338.08,
+            "ohlc": {
+                "open": 279.79,
+                "high": 279.79,
+                "low": 276.99,
+                "close": 279.05
+            },
+            "depth": {
+                "buy": [
+                    {
+                        "price": 277.74,
+                        "quantity": 1999,
+                        "orders": 1
+                    },
+                    {
+                        "price": 277.71,
+                        "quantity": 17724,
+                        "orders": 1
+                    },
+                    {
+                        "price": 277.7,
+                        "quantity": 1809,
+                        "orders": 12
+                    },
+                    {
+                        "price": 277.69,
+                        "quantity": 2,
+                        "orders": 1
+                    },
+                    {
+                        "price": 277.66,
+                        "quantity": 1432,
+                        "orders": 1
+                    }
+                ],
+                "sell": [
+                    {
+                        "price": 277.75,
+                        "quantity": 9303,
+                        "orders": 1
+                    },
+                    {
+                        "price": 277.76,
+                        "quantity": 100,
+                        "orders": 1
+                    },
+                    {
+                        "price": 277.79,
+                        "quantity": 64,
+                        "orders": 3
+                    },
+                    {
+                        "price": 277.8,
+                        "quantity": 106,
+                        "orders": 3
+                    },
+                    {
+                        "price": 277.81,
+                        "quantity": 424,
+                        "orders": 2
+                    }
+                ]
+            }
+        }
+    }
+}

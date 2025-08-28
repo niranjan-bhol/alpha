@@ -1,0 +1,25 @@
+login.py | login | cron job @ 08:50 AM
+instruments.py | fetch instruments and export as csv and json | cron job @ 8:52 AM
+historical_data.py | fetch historical data and export as csv | cron job @ 8:55 AM
+margin.py | fetch and calculate margins | cron job @ 9:00 AM
+volume_calc.py | fetch and calculate volumes | cron job @ 9:05 AM
+todays_data.py | fetch today's data | cron job @ 9:10 AM
+ml.py | train ml and price predictions | cron job @ 9:11 AM
+payload_price_calc.py | payload price calculation | cron job @ 9:12:00 AM
+payload_volume_calc.py | payload volume calculation | cron job @ 9:12:30 AM
+generate_entry_payload.py | entry payload generation -> entry_payload.py | cron job @ 9:13:00 AM
+entry_place_order_kite.py / entry_place_order_zerodha.py | place entry orders @ 9:15:00.000001 AM | cron job @ 9:13:50 AM
+entry_cancel_order.py | cancel pending entry orders | cron job @ 9:15:10 AM
+fetch_open_positions.py | fetching open positions -> open_positions.json | code flow (1)
+fetch_current_data.py | fetch current price volume data -> quotes.json | code flow (2)
+generate_exit_payload.py | exit payload generation -> exit_payload.py | code flow (3)
+exit_place_order.py | place exit orders | code flow (4)
+
+loop : 
+- code flow (1)
+- code flow (2)
+- code flow (3)
+- exit_modify_order.py | modify exit orders
+
+exit_cancel_order.py | cancel exit orders
+done.py | all done | cron job @ 9:17 AM
