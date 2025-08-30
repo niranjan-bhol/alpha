@@ -20,7 +20,7 @@ def save_volumes(predicted_volumes, output_file):
     print(f"{datetime.now()} - redicted volumes saved to {output_file}")
 
 if __name__ == "__main__":
-    historical_folder = "historical_data"
+    historical_folder = "historical_data_vol"
     predicted_folder = "predicted_data"
     os.makedirs(predicted_folder, exist_ok=True)
     output_file = os.path.join(predicted_folder, "safe_volumes.json")
