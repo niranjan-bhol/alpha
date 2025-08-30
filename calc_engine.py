@@ -1,12 +1,10 @@
 import os
 import json
 from datetime import datetime
-import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
 from pre_data import PAIRS
 
-HISTORICAL_FOLDER = "historical_data"
+HISTORICAL_FOLDER = "historical_data_price"
 TODAYS_FOLDER = "todays_data"
 PREDICTED_FOLDER = "predicted_data"
 
@@ -22,25 +20,16 @@ def load_todays_open():
     with open(path) as f:
         return json.load(f)
 
-def train_model(etf_df, underlying_df):
+def predict_open_ratio(etf_df, underlying_df, underlying_open_price, window=90):
     merged = pd.merge(
         etf_df[["datetime", "close"]],
         underlying_df[["datetime", "close"]],
-        on="datetime", suffixes=("_etf", "_underlying")
+        on="datetime",
+        suffixes=("_etf", "_underlying")
     )
-    X = merged["close_underlying"].to_numpy().reshape(-1, 1)
-    y = merged["close_etf"].to_numpy()
-    model = RandomForestRegressor(
-        n_estimators=200,
-        max_depth=6,
-        random_state=42,
-        n_jobs=-1
-    )
-    model.fit(X, y)
-    return model
-
-def predict_open(model, underlying_open_price):
-    return float(model.predict([[underlying_open_price]])[0])
+    merged["ratio"] = merged["close_etf"] / merged["close_underlying"]
+    rolling_ratio = merged["ratio"].tail(window).mean()
+    return float(underlying_open_price * rolling_ratio)
 
 def save_predictions(predictions, filename="predicted_prices.json"):
     os.makedirs(PREDICTED_FOLDER, exist_ok=True)
@@ -54,7 +43,8 @@ if __name__ == "__main__":
     predictions = {}
     for etf, underlying in PAIRS.items():
         etf_df, underlying_df = load_historical(f"{etf}.csv", f"{underlying}.csv")
-        model = train_model(etf_df, underlying_df)
-        predictions[etf] = predict_open(model, todays_open[underlying])
+        predictions[etf] = predict_open_ratio(
+            etf_df, underlying_df, todays_open[underlying], window=90
+        )
     output_file = save_predictions(predictions)
     print(f"{datetime.now()} - Saved all predicted open prices to {output_file}")
