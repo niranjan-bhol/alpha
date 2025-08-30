@@ -6,7 +6,7 @@ from pre_data import UNDERLYING_TOKENS, ETF_TOKENS
 
 API_KEY = "wejdamed8baj4kpq"
 ACCESS_TOKEN_FILE = "access_token.txt"
-INTERVAL = "day"
+INTERVAL = "minute"
 START_DATE = "2021-01-01"
 OUTPUT_FOLDER = "historical_data"
 
@@ -15,8 +15,6 @@ with open(ACCESS_TOKEN_FILE, "r") as f:
 
 start_date = datetime.strptime(START_DATE, "%Y-%m-%d")
 end_date = datetime.today() - timedelta(days=1)
-FROM_TIME = start_date.strftime("%Y-%m-%d 09:15:00")
-TO_TIME = end_date.strftime("%Y-%m-%d 16:00:00")
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def fetch_candles(symbol, token):
@@ -25,11 +23,26 @@ def fetch_candles(symbol, token):
         "X-Kite-Version": "3",
         "Authorization": f"token {API_KEY}:{ACCESS_TOKEN}",
     }
-    params = {"from": FROM_TIME, "to": TO_TIME}
-    response = requests.get(url, headers=headers, params=params)
-    data = response.json().get("data", {})
-    candles = data.get("candles", [])
-    df = pd.DataFrame(candles, columns=["datetime", "open", "high", "low", "close", "volume"])
+
+    all_candles = []
+    chunk_start = start_date
+    while chunk_start < end_date:
+        chunk_end = min(chunk_start + timedelta(days=60), end_date)
+        params = {
+            "from": chunk_start.strftime("%Y-%m-%d %H:%M:%S"),
+            "to": chunk_end.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        response = requests.get(url, headers=headers, params=params)
+        data = response.json().get("data", {})
+        candles = data.get("candles", [])
+        all_candles.extend(candles)
+        chunk_start = chunk_end + timedelta(days=1)
+
+    if not all_candles:
+        print(f"{datetime.now()} - No data for {symbol}")
+        return None
+
+    df = pd.DataFrame(all_candles, columns=["datetime", "open", "high", "low", "close", "volume"])
     df = df[["datetime", "close", "volume"]]
     output_file = os.path.join(OUTPUT_FOLDER, f"{symbol}.csv")
     df.to_csv(output_file, index=False)
@@ -39,7 +52,9 @@ def fetch_candles(symbol, token):
 def fetch_all(symbol_dict):
     all_data = {}
     for symbol, token in symbol_dict.items():
-        all_data[symbol] = fetch_candles(symbol, token)
+        df = fetch_candles(symbol, token)
+        if df is not None:
+            all_data[symbol] = df
     return all_data
 
 if __name__ == "__main__":
