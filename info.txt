@@ -1,6 +1,7 @@
 login.py | login | cron job @ 08:50 AM
 instruments.py | fetch instruments and export as csv and json | cron job @ 8:52 AM
-historical_data.py | fetch historical data and export as csv | cron job @ 8:55 AM
+historical_data_vol.py | fetch historical volume data and export as csv | cron job @ 8:55 AM
+historical_data_price.py | fetch historical price data and export as csv | cron job @ 8:57 AM
 margin.py | fetch and calculate margins | cron job @ 9:00 AM
 volume_calc.py | fetch and calculate volumes | cron job @ 9:05 AM
 todays_data.py | fetch today's data | cron job @ 9:10 AM
