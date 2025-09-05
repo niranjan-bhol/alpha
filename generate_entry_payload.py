@@ -5,7 +5,7 @@ from datetime import datetime
 ADJUSTED_VOLUMES_FILE = os.path.join("predicted_data", "adjusted_volumes.json")
 PRICES_FILE = os.path.join("predicted_data", "payload_prices.json")
 OUTPUT_DIR = "payloads"
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "entry_payloads.py")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "entry_payload.py")
 
 def load_json(file_path):
     with open(file_path, "r") as f:
